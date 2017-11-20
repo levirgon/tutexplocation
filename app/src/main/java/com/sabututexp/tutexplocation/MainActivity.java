@@ -124,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         Location destination = new Location("");
         destination.setLatitude(lat);
         destination.setLongitude(lng);
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("PlaceLatitude", String.valueOf(destination.getLatitude())).commit();
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("PlaceLongitude", String.valueOf(destination.getLongitude())).commit();
 
 
     }

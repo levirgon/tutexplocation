@@ -151,8 +151,8 @@ public class PlacesAdapter extends RecyclerView.Adapter {
             bundle.putString("placeName",mPlaceName.getText().toString());
             bundle.putDouble("userLatitute",mCurrentLocation.getLatitude());
             bundle.putDouble("userLongitute",mCurrentLocation.getLongitude());
-            bundle.putDouble("placeLatitute",targetLocation.getLatitude());
-            bundle.putDouble("placeLongitute",targetLocation.getLongitude());
+            /*bundle.putDouble("placeLatitute",targetLocation.getLatitude());
+            bundle.putDouble("placeLongitute",targetLocation.getLongitude());*/
             intent.putExtras(bundle);
             v.getContext().startActivity(intent);
 

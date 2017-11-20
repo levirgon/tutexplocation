@@ -1,5 +1,6 @@
 package com.sabututexp.tutexplocation;
 
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -28,9 +29,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     SupportMapFragment mapFragment;
-    private double userLatitute, userLongitute, placeLatitute, placeLongitute;
+    private double userLatitute, userLongitute;
     private LatLng userLoc,desLoc;
-    private String placeName;
+    private String placeName,placeLatitute, placeLongitute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +42,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             placeName = extras.getString("placeName");
             userLatitute = extras.getDouble("userLatitute");
             userLongitute = extras.getDouble("userLongitute");
-            placeLatitute = extras.getDouble("placeLatitute");
-            placeLongitute = extras.getDouble("placeLongitute");
+            /*placeLatitute = extras.getDouble("placeLatitute");
+            placeLongitute = extras.getDouble("placeLongitute");*/
         }
 
+        placeLatitute = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("PlaceLatitude", "No Latitude Value Stored");
+        placeLongitute =PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("PlaceLongitude", "No Longitude Value Stored");;
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         userLoc = new LatLng(userLatitute,userLongitute);
-        desLoc = new LatLng(placeLatitute,placeLongitute);
+        desLoc = new LatLng(Double.parseDouble(placeLatitute),Double
+                .parseDouble(placeLongitute));
         if(desLoc != null){
             getRouteToMarker();
         }
