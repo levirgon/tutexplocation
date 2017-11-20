@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Nearby Search</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAWV0chnVhy9P3AHp-GGT9Zyb66yMdxdF0</string>
+</resources>
